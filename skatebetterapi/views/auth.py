@@ -39,11 +39,13 @@ def register_user(request):
         first_name=req_body['first_name'],
         last_name=req_body['last_name']
     )
-    # & save teh extra info in the levelupapi_gamer table
+    # & save teh extra info in the Skater table
     skater = Skater.objects.create(
+        user=new_user,
         fav_skater=req_body['fav_skater'],
         fav_video=req_body['fav_video'],
-        user=new_user
+        goofy=req_body['goofy'],
+        handle=req_body['handle']
     )
     # commit the user to the database by saving it 
     # gamer.save()
