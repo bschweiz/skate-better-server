@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
+from skatebetterapi.models import Skater
 
 @csrf_exempt
 def login_user(request):
@@ -39,10 +40,11 @@ def register_user(request):
         last_name=req_body['last_name']
     )
     # & save teh extra info in the levelupapi_gamer table
-    # gamer = Gamer.objects.create(
-    #     bio=req_body['bio'],
-    #     user=new_user
-    # )
+    skater = Skater.objects.create(
+        fav_skater=req_body['fav_skater'],
+        fav_video=req_body['fav_video'],
+        user=new_user
+    )
     # commit the user to the database by saving it 
     # gamer.save()
     # use the REST Framework's token generator on the new user account
