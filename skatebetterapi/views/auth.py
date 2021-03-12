@@ -1,9 +1,11 @@
 import json
 from django.http import HttpResponse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.models import Token
+from skatebetterapi.models import Skater
+from rest_framework import status
 
 @csrf_exempt
 def login_user(request):
@@ -38,15 +40,18 @@ def register_user(request):
         first_name=req_body['first_name'],
         last_name=req_body['last_name']
     )
-    # & save teh extra info in the levelupapi_gamer table
-    # gamer = Gamer.objects.create(
-    #     bio=req_body['bio'],
-    #     user=new_user
-    # )
-    # commit the user to the database by saving it 
-    # gamer.save()
+    # & save teh extra info in the Skater table
+    skater = Skater.objects.create(
+        user=new_user,
+        fav_skater=req_body['fav_skater'],
+        fav_video=req_body['fav_video'],
+        goofy=req_body['goofy'],
+        handle=req_body['handle']
+    )
+    # commit the User to the database via Skater, save them both 
+    skater.save()
     # use the REST Framework's token generator on the new user account
     token = Token.objects.create(user=new_user)
     # return the token to the client
     data = json.dumps({"token": token.key})
-    return HttpResponse(data, content_type='application/json')
+    return HttpResponse(data, content_type='application/json', status=status.HTTP_201_CREATED)
