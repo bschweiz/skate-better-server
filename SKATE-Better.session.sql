@@ -1,2 +1,2 @@
 SELECT *
-FROM authtoken_token
+FROM auth_user
