@@ -4,7 +4,7 @@ from .opponent import Opponent
 
 class Game(models.Model):
 
-    skater = models.ForeignKey(Skater, on_delete=models.CASCADE)
+    skater = models.ForeignKey(Skater, on_delete=models.CASCADE, related_name='skaters')
     opponent = models.ForeignKey(Opponent, on_delete=models.CASCADE)
     location = models.CharField(max_length=333)
     won = models.BooleanField(default=False)

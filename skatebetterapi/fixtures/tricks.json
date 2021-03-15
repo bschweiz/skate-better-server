@@ -38,5 +38,85 @@
             "stance": 4,
             "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
         }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 5,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Ollie",
+            "stance": 1,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 6,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Fakie Ollie",
+            "stance": 2,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 7,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Switch Ollie",
+            "stance": 3,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 8,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Nollie",
+            "stance": 4,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 9,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Ollie",
+            "stance": 1,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 10,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Fakie Ollie",
+            "stance": 2,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 11,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Switch Ollie",
+            "stance": 3,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 12,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Nollie",
+            "stance": 4,
+            "description": "Rotate body and board towards heel-side"
+        }
     }
 ]

@@ -8,4 +8,4 @@ UPDATE skatebetterapi_skater
 SET goofy = 1
 
 SELECT *
-FROM skatebetterapi_game
+FROM authtoken_token
