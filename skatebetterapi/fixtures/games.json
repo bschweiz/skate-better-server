@@ -1,0 +1,32 @@
+[
+    {
+        "model": "skatebetterapi.game",
+        "pk": 1,
+        "fields": {
+            "scheduler": 1,
+            "game_id": 1,
+            "game_time": "2021-03-10T14:00:00.000Z",
+            "location": "NSS"
+        }
+    },
+    {
+        "model": "skatebetterapi.game",
+        "pk": 2,
+        "fields": {
+            "scheduler": 1,
+            "game_id": 2,
+            "game_time": "2021-03-11T14:00:00.000Z",
+            "location": "NSS"
+        }
+    },
+    {
+        "model": "skatebetterapi.game",
+        "pk": 3,
+        "fields": {
+            "scheduler": 1,
+            "game_id": 3,
+            "event_time": "2021-03-12T14:00:00.000Z",
+            "location": "NSS"
+        }
+    }
+]
