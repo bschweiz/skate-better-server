@@ -3,7 +3,6 @@
         "model": "skatebetterapi.trick",
         "pk": 1,
         "fields": {
-            "trick_id": 1,
             "skater": 1,
             "name": "Ollie",
             "stance": 1,
@@ -14,7 +13,6 @@
         "model": "skatebetterapi.trick",
         "pk": 2,
         "fields": {
-            "trick_id": 2,
             "skater": 1,
             "name": "Fakie Ollie",
             "stance": 2,
@@ -25,7 +23,6 @@
         "model": "skatebetterapi.trick",
         "pk": 3,
         "fields": {
-            "trick_id": 3,
             "skater": 1,
             "name": "Switch Ollie",
             "stance": 3,
@@ -36,7 +33,6 @@
         "model": "skatebetterapi.trick",
         "pk": 4,
         "fields": {
-            "trick_id": 3,
             "skater": 1,
             "name": "Nollie",
             "stance": 4,
