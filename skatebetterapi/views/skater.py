@@ -29,10 +29,13 @@ class Skaters(ViewSet):
 
     
 # gonna try and build a simple user data responder
-    def retrieve(self, request, pk=None)
+    def retrieve(self, request):
         try:
             skater = Skater.objects.get(user=request.auth.user)
-
+            serializer = SkaterSerializer(skater, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
         
 class UserSerializer(serializers.ModelSerializer):
     # JSON serializer for gamer's related DJANGO 'User'
