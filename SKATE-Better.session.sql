@@ -6,3 +6,6 @@ ON au.id = sk.user_id
 
 UPDATE skatebetterapi_skater 
 SET goofy = 1
+
+SELECT *
+FROM skatebetterapi_trick
