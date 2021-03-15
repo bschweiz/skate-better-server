@@ -6,7 +6,7 @@
             "skater": 1,
             "name": "Ollie",
             "stance": 1,
-            "description": "Two Rivers Parking Lot"
+            "description": "First Basic Trick"
         }
     },
     {
@@ -16,7 +16,7 @@
             "skater": 1,
             "name": "Fakie Ollie",
             "stance": 2,
-            "description": "Two Rivers Parking Lot"
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
         }
     },
     {
@@ -26,7 +26,7 @@
             "skater": 1,
             "name": "Switch Ollie",
             "stance": 3,
-            "description": "Two Rivers Parking Lot"
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
         }
     },
     {
@@ -36,7 +36,7 @@
             "skater": 1,
             "name": "Nollie",
             "stance": 4,
-            "description": "Two Rivers Parking Lot"
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
         }
     }
 ]
