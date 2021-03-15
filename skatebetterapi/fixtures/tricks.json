@@ -1,0 +1,42 @@
+[
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 1,
+        "fields": {
+            "skater": 1,
+            "name": "Ollie",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 2,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie Ollie",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 3,
+        "fields": {
+            "skater": 1,
+            "name": "Switch Ollie",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 4,
+        "fields": {
+            "skater": 1,
+            "name": "Nollie",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
+    }
+]
