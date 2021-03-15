@@ -3,7 +3,6 @@
         "model": "skatebetterapi.opponent",
         "pk": 1,
         "fields": {
-            "opponent_id": 1,
             "skater": 1,
             "handle": "John",
             "goofy": false
@@ -13,7 +12,6 @@
         "model": "skatebetterapi.opponent",
         "pk": 2,
         "fields": {
-            "opponent_id": 2,
             "skater": 1,
             "handle": "Terrance",
             "goofy": false

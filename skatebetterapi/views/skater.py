@@ -8,22 +8,22 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from skatebetterapi.models import Skater
+from skatebetterapi.models import Skater, Game
 
 class Skaters(ViewSet):
     # handle GET request to profile resource, returns JSON of User info and events
     def list(self, request):
-        gamer = Gamer.objects.get(user=request.auth.user)
-        events = Event.objects.filter(eventgamer__gamer=gamer)
+        skater = Skater.objects.get(user=request.auth.user)
+        games = Game.objects.filter(eventgamer__gamer=gamer)
 
-        events = EventSerializer(
+        games = GameSerializer(
             events, many=True, context={'request': request})
-        gamer = GamerSerializer(
+        skater = SkaterSerializer(
             gamer, many=False, context={'request': request})
         # there is NO MODEL for Profile so we gotta make an obj fr. scatch
         profile = {}
-        profile['gamer'] = gamer.data
-        profile['events'] = events.data
+        profile['skater'] = skater.data
+        profile['games'] = games.data
 
         return Response(profile)
 
@@ -32,6 +32,8 @@ class Skaters(ViewSet):
     def retrieve(self, request, pk=None)
         try:
             skater = Skater.objects.get(user=request.auth.user)
+
+        
 class UserSerializer(serializers.ModelSerializer):
     # JSON serializer for gamer's related DJANGO 'User'
     class Meta:
