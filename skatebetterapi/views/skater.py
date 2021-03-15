@@ -12,27 +12,39 @@ from skatebetterapi.models import Skater, Game
 
 class Skaters(ViewSet):
     # handle GET request to profile resource, returns JSON of User info and events
-    def list(self, request):
-        skater = Skater.objects.get(user=request.auth.user)
-        games = Game.objects.filter(eventgamer__gamer=gamer)
+    # def list(self, request):
+    #     skater = Skater.objects.get(user=request.auth.user)
+    #     games = Game.objects.filter(games__skater=skater)
 
-        games = GameSerializer(
-            events, many=True, context={'request': request})
-        skater = SkaterSerializer(
-            gamer, many=False, context={'request': request})
-        # there is NO MODEL for Profile so we gotta make an obj fr. scatch
-        profile = {}
-        profile['skater'] = skater.data
-        profile['games'] = games.data
+    #     games = GameSerializer(
+    #         events, many=True, context={'request': request})
+    #     skater = SkaterSerializer(
+    #         skater, many=False, context={'request': request})
+    #     # there is NO MODEL for Profile so we gotta make an obj fr. scatch
+    #     profile = {}
+    #     profile['skater'] = skater.data
+    #     profile['games'] = games.data
 
-        return Response(profile)
+    #     return Response(profile)
 
     
 # gonna try and build a simple user data responder
-    def retrieve(self, request, pk=None)
+    def list(self, request):
         try:
             skater = Skater.objects.get(user=request.auth.user)
+            games = Game.objects.filter(skater=skater)
+            
+            games = GameSerializer(games, many=True, context={'context': request})
+            skater = SkaterSerializer( skater, many=False, context={'context': request})
 
+            profile = {}
+            profile['skater'] = skater.data
+            profile['games'] = games.data
+
+            return Response(profile)
+            
+        except Exception as ex:
+            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
         
 class UserSerializer(serializers.ModelSerializer):
     # JSON serializer for gamer's related DJANGO 'User'
@@ -40,10 +52,16 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('first_name', 'last_name', 'username')
 
+class GameSerializer(serializers.ModelSerializer):
+    # JSON serializer for gamer's related DJANGO 'User'
+    class Meta:
+        model = Game
+        fields = ('opponent', 'date_time', 'location', 'won')
+
 class SkaterSerializer(serializers.ModelSerializer):
     # JSON serilizer for Skaters
     user = UserSerializer(many=False)
 
     class Meta:
         model = Skater
-        fields = ('first_name', 'last_name', 'username', 'goofy', 'fav_skater', 'fav_video')
+        fields = ('handle','goofy', 'fav_skater', 'fav_video', 'user')
