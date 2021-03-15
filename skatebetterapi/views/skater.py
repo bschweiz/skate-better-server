@@ -8,7 +8,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from levelupapi.models import Skater
+from skatebetterapi.models import Skater
 
 class Skaters(ViewSet):
     # handle GET request to profile resource, returns JSON of User info and events
@@ -29,31 +29,19 @@ class Skaters(ViewSet):
 
     
 # gonna try and build a simple user data responder
-    def retrieve 
+    def retrieve(self, request, pk=None)
+        try:
+            skater = Skater.objects.get(user=request.auth.user)
 class UserSerializer(serializers.ModelSerializer):
     # JSON serializer for gamer's related DJANGO 'User'
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username')
 
-class GamerSerializer(serializers.ModelSerializer):
-    # JSON serilizer for gamers
+class SkaterSerializer(serializers.ModelSerializer):
+    # JSON serilizer for Skaters
     user = UserSerializer(many=False)
 
     class Meta:
-        model = Gamer
-        fields = ('user', 'bio')
-
-class GameSerializer(serializers.ModelSerializer):
-    # JSON serializer for games, not sure why exactly we are declaring it since not used yet as of chapter 13
-    class Meta:
-        model = Game
-        fields = ('title', )
-
-class EventSerializer(serializers.ModelSerializer):
-    """JSON serializer for events"""
-    game = GameSerializer(many=False)
-
-    class Meta:
-        model = Event
-        fields = ('id', 'game', 'location', 'event_time')
+        model = Skater
+        fields = ('first_name', 'last_name', 'username', 'goofy', 'fav_skater', 'fav_video')
