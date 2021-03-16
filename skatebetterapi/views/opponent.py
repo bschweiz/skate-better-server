@@ -11,8 +11,20 @@ from rest_framework import serializers
 from skatebetterapi.models import Skater, Game, Opponent
 
 class Opponents(ViewSet):
-   
-    
+    def create(self, request):
+        # handle POST operations for events, returns serialized JSON instance
+        opponent = Opponent()
+        opponent.skater = Skater.objects.get(user=request.auth.user)
+        opponent.goofy = request.data['goofy']
+        opponent.handle = request.data['handle']
+        
+
+        try:
+            opponent.save()
+            serializer = OpponentSerializer(opponent, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)
 # gonna try and build a simple user data responder
     def list(self, request):
         try:
