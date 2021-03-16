@@ -25,7 +25,7 @@ class Opponents(ViewSet):
 
             opponent = OpponentSerializer(opponent, many=True, context={'context': request})
 
-            return Response(profile.data)
+            return Response(opponent.data)
             
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
