@@ -32,14 +32,14 @@ class Skaters(ViewSet):
     def list(self, request):
         try:
             skater = Skater.objects.get(user=request.auth.user)
-            games = Game.objects.filter(skater=skater)
             
         
-            games = GameSerializer(games, many=True, context={'context': request})
+            # games = GameSerializer(games, many=True, context={'context': request})
+            skater.games = Game.objects.filter(skater=skater)
 
-            profile = SkaterSerializer( skater, many=False, context={'context': request})
+            profile = ProfileSerializer(skater, many=False, context={'context': request})
 
-            return Response(profile)
+            return Response(profile.data)
             
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_410_GONE)
@@ -56,7 +56,7 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = ('opponent', 'date_time', 'location', 'won')
 
-class SkaterSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     # JSON serilizer for Skaters
     user = UserSerializer(many=False)
     games = GameSerializer(many=True)
