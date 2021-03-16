@@ -20,7 +20,7 @@ from skatebetterapi.views import register_user, login_user
 from skatebetterapi.views import Skaters
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'profile', Skaters, 'skater')
+router.register(r'profile', Skaters, 'profile')
 
 urlpatterns = [
     path('', include(router.urls)),

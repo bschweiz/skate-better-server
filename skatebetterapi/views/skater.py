@@ -32,19 +32,17 @@ class Skaters(ViewSet):
     def list(self, request):
         try:
             skater = Skater.objects.get(user=request.auth.user)
-            games = Game.objects.filter(skater=skater)
+            # games = Game.objects.filter(skater=skater)
             
-            games = GameSerializer(games, many=True, context={'context': request})
             skater = SkaterSerializer( skater, many=False, context={'context': request})
+            # games = GameSerializer(games, many=True, context={'context': request})
 
-            profile = {}
-            profile['skater'] = skater.data
-            profile['games'] = games.data
+            profile = SkaterSerializer( skater, many=False, context={'context': request})
 
-            return Response(profile)
+            return Response(profile.data)
             
         except Exception as ex:
-            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+            return HttpResponseServerError(ex, status=status.HTTP_410_GONE)
         
 class UserSerializer(serializers.ModelSerializer):
     # JSON serializer for gamer's related DJANGO 'User'
@@ -61,6 +59,7 @@ class GameSerializer(serializers.ModelSerializer):
 class SkaterSerializer(serializers.ModelSerializer):
     # JSON serilizer for Skaters
     user = UserSerializer(many=False)
+    games = GameSerializer(many=True)
 
     class Meta:
         model = Skater
