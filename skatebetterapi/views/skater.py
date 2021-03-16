@@ -42,7 +42,7 @@ class Skaters(ViewSet):
             return Response(profile.data)
             
         except Exception as ex:
-            return HttpResponseServerError(ex, status=status.HTTP_410_GONE)
+            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
         
 class UserSerializer(serializers.ModelSerializer):
     # JSON serializer for gamer's related DJANGO 'User'
