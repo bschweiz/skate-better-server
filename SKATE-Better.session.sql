@@ -9,3 +9,6 @@ SET goofy = 1
 
 SELECT *
 FROM authtoken_token
+
+SELECT *
+FROM skatebetterapi_trick
