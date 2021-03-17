@@ -19,9 +19,26 @@ class Games(ViewSet):
         game.skater = skater
         game.opponent = opponent
         game.location = request.data['location']
+
+        try:
+            game.save()
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+    
+    def update(self, request):
+        
+        game = Game()
+        skater = Skater.objects.get(user=request.auth.user)
+        opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game.skater = skater
+        game.opponent = opponent
+        game.location = request.data['location']
+        game.won = request.data['won']
         game.save()
 
-        return Response({}, status=status.HTTP_201_CREATED)
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
     
     def list(self, request):
         try:

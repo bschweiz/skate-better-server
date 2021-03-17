@@ -46,5 +46,5 @@ class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Opponent
-        fields = ('handle', 'goofy')
+        fields = ('handle', 'goofy', 'id')
 
