@@ -1,5 +1,4 @@
-# from levelupapi.views.game import GameSerializer
-# from levelupapi.views.event import EventSerializer
+
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
