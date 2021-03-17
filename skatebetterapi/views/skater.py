@@ -28,13 +28,9 @@ class Skaters(ViewSet):
     #     return Response(profile)
 
     
-# gonna try and build a simple user data responder
     def list(self, request):
         try:
             skater = Skater.objects.get(user=request.auth.user)
-            
-        
-            # games = GameSerializer(games, many=True, context={'context': request})
             skater.games = Game.objects.filter(skater=skater)
 
             profile = ProfileSerializer(skater, many=False, context={'context': request})

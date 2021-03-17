@@ -25,15 +25,15 @@ class Games(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
         
+class OpponentSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Opponent
+        fields = ('handle', 'goofy')
+        
 class GameSerializer(serializers.ModelSerializer):
     opponent = OpponentSerializer(many=False)
     
     class Meta:
         model = Game
         fields = ('opponent','won', 'date_time', 'location')
-
-class OpponentSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Opponent
-        fields = ('handle', 'goofy')
