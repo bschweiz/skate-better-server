@@ -13,13 +13,16 @@ class Games(ViewSet):
 
     def create(self, request):
         
+        game = Game()
         skater = Skater.objects.get(user=request.auth.user)
         opponent = Opponent.objects.get(pk=request.data['opponentId'])
-        game = Game()
         game.skater = skater
         game.opponent = opponent
         game.location = request.data['location']
         game.won = request.data['won']
+        game.save()
+
+        return Response({}, status=status.HTTP_201_CREATED)
     
     def list(self, request):
         try:
