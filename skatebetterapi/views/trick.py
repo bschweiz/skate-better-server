@@ -8,7 +8,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from skatebetterapi.models import Skater, Game, Opponent
+from skatebetterapi.models import Trick
 
 class Tricks(ViewSet):
     
@@ -18,9 +18,9 @@ class Tricks(ViewSet):
             
         
 
-            opponent = OpponentSerializer(opponent, many=True, context={'context': request})
+            serializer = TrickSerializer(tricks, many=True, context={'context': request})
 
-            return Response(opponent.data)
+            return Response(serializer.data)
             
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
@@ -29,4 +29,4 @@ class TrickSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Trick
-        fields = ('id','name', 'goofy')
+        fields = ('id','name', 'stance')
