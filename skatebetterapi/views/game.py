@@ -13,7 +13,8 @@ class Games(ViewSet):
     
     def list(self, request):
         try:
-            games = Game.objects.all()
+            skater = Skater.objects.get(user=request.auth.user)
+            games = Game.objects.filter(skater=skater)
             
         
 
@@ -25,6 +26,7 @@ class Games(ViewSet):
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
         
 class GameSerializer(serializers.ModelSerializer):
+    opponent = OpponentSerializer(many=False)
     
     class Meta:
         model = Game

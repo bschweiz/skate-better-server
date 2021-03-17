@@ -23,6 +23,7 @@ router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'profile', Skaters, 'profile')
 router.register(r'opponent', Opponents, 'opponent')
 router.register(r'tricks', Tricks, 'opponent')
+router.register(r'game', Games, 'game')
 
 urlpatterns = [
     path('', include(router.urls)),
