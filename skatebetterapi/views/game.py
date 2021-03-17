@@ -7,7 +7,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from skatebetterapi.models import Skater, Game, Opponent
+from skatebetterapi.models import Skater, Game, Opponent, opponent
 
 class Games(ViewSet):
 
@@ -53,7 +53,31 @@ class Games(ViewSet):
             
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+
+    @action(methods=['post'], detail=True)
+    def addnewopponent(self, request, pk=None):
+        # when you need to add an opponent and a new game
+        opponent = Opponent()
+        opponent.handle = request.data['handle']
+        opponent.goofy = request.data['goofy']
+        opponent.save()
+
+        game = Game()
+        skater = Skater.objects.get(user=request.auth.user)
+        opponent = Opponent.objects.get(handle=request.data['handle'])
+        game.skater = skater
+        game.opponent = opponent
+        game.location = request.data['location']
+        game.won = request.data['won']
         
+
+        try:
+            game.save()
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
 class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -65,4 +89,4 @@ class GameSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Game
-        fields = ('opponent','won', 'date_time', 'location')
+        fields = ('opponent', 'won', 'date_time', 'location')

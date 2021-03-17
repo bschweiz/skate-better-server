@@ -1,5 +1,4 @@
-# from levelupapi.views.game import GameSerializer
-# from levelupapi.views.event import EventSerializer
+
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
@@ -56,4 +55,4 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Skater
-        fields = ('handle','goofy', 'fav_skater', 'fav_video', 'user', 'games')
+        fields = ('handle', 'goofy', 'fav_skater', 'fav_video', 'user', 'games')
