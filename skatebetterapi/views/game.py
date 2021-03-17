@@ -10,6 +10,16 @@ from rest_framework import serializers
 from skatebetterapi.models import Skater, Game, Opponent
 
 class Games(ViewSet):
+
+    def create(self, request):
+        
+        skater = Skater.objects.get(user=request.auth.user)
+        opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game = Game()
+        game.skater = skater
+        game.opponent = opponent
+        game.location = request.data['location']
+        game.won = request.data['won']
     
     def list(self, request):
         try:
@@ -30,7 +40,7 @@ class OpponentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Opponent
         fields = ('handle', 'goofy')
-        
+
 class GameSerializer(serializers.ModelSerializer):
     opponent = OpponentSerializer(many=False)
     
