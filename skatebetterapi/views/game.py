@@ -10,10 +10,24 @@ from rest_framework import serializers
 from skatebetterapi.models import Skater, Game, Opponent
 
 class Games(ViewSet):
+
+    def create(self, request):
+        
+        game = Game()
+        skater = Skater.objects.get(user=request.auth.user)
+        opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game.skater = skater
+        game.opponent = opponent
+        game.location = request.data['location']
+        game.won = request.data['won']
+        game.save()
+
+        return Response({}, status=status.HTTP_201_CREATED)
     
     def list(self, request):
         try:
-            games = Game.objects.all()
+            skater = Skater.objects.get(user=request.auth.user)
+            games = Game.objects.filter(skater=skater)
             
         
 
@@ -24,14 +38,15 @@ class Games(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
         
-class GameSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Game
-        fields = ('opponent','won', 'date_time', 'location')
-
 class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Opponent
         fields = ('handle', 'goofy')
+
+class GameSerializer(serializers.ModelSerializer):
+    opponent = OpponentSerializer(many=False)
+    
+    class Meta:
+        model = Game
+        fields = ('opponent','won', 'date_time', 'location')

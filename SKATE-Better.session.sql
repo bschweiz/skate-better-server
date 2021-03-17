@@ -12,5 +12,9 @@ FROM authtoken_token
 
 SELECT *
 FROM skatebetterapi_trick
+
+SELECT *
+FROM skatebetterapi_game
+
 SELECT *
 FROM skatebetterapi_opponent
