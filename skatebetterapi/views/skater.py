@@ -45,19 +45,16 @@ class Skaters(ViewSet):
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
         
 class UserSerializer(serializers.ModelSerializer):
-    # JSON serializer for gamer's related DJANGO 'User'
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username')
 
 class GameSerializer(serializers.ModelSerializer):
-    # JSON serializer for gamer's related DJANGO 'User'
     class Meta:
         model = Game
         fields = ('opponent', 'date_time', 'location', 'won')
 
 class ProfileSerializer(serializers.ModelSerializer):
-    # JSON serilizer for Skaters
     user = UserSerializer(many=False)
     games = GameSerializer(many=True)
 
