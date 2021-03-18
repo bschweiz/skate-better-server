@@ -5,8 +5,8 @@
         "fields": {
             "game": 1,
             "trick": 1,
-            "user_make": false,
-            "opponent_make": true
+            "user_make": true,
+            "opponent_make": false
         }
     },
     {
@@ -15,8 +15,8 @@
         "fields": {
             "game": 1,
             "trick": 2,
-            "user_make": false,
-            "opponent_make": true
+            "user_make": true,
+            "opponent_make": false
         }
     },
     {
@@ -36,7 +36,7 @@
             "game": 1,
             "trick": 4,
             "user_make": true,
-            "opponent_make": true
+            "opponent_make": false
         }
     },
     {
@@ -46,7 +46,7 @@
             "game": 1,
             "trick": 5,
             "user_make": true,
-            "opponent_make": true
+            "opponent_make": false
         }
     },
     {
@@ -55,8 +55,8 @@
         "fields": {
             "game": 1,
             "trick": 6,
-            "user_make": false,
-            "opponent_make": true
+            "user_make": true,
+            "opponent_make": false
         }
     }
 ]
