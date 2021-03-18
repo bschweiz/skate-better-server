@@ -53,7 +53,31 @@ class Games(ViewSet):
             
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+
+    @action(methods=['post'], detail=False)
+    def addnewopponent(self, request, pk=None):
+        # when you need to add an opponent and a new game
+        opponent = Opponent()
+        opponent.skater = Skater.objects.get(user=request.auth.user)
+        opponent.handle = request.data['handle']
+        opponent.goofy = request.data['goofy']
+        opponent.save()
+
+        game = Game()
+        skater = Skater.objects.get(user=request.auth.user)
+        game.opponent = Opponent.objects.get(handle=request.data['handle'])
+        game.skater = skater
+        game.opponent_id = opponent.id
+        game.location = request.data['location']
         
+
+        try:
+            game.save()
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
 class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -65,4 +89,4 @@ class GameSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Game
-        fields = ('opponent','won', 'date_time', 'location')
+        fields = ('opponent', 'won', 'date_time', 'location', 'id')
