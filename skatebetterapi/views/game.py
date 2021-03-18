@@ -54,21 +54,21 @@ class Games(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
 
-    @action(methods=['post'], detail=True)
+    @action(methods=['post'], detail=False)
     def addnewopponent(self, request, pk=None):
         # when you need to add an opponent and a new game
         opponent = Opponent()
+        opponent.skater = Skater.objects.get(user=request.auth.user)
         opponent.handle = request.data['handle']
         opponent.goofy = request.data['goofy']
         opponent.save()
 
         game = Game()
         skater = Skater.objects.get(user=request.auth.user)
-        opponent = Opponent.objects.get(handle=request.data['handle'])
+        game.opponent = Opponent.objects.get(handle=request.data['handle'])
         game.skater = skater
-        game.opponent = opponent
+        game.opponent_id = opponent.id
         game.location = request.data['location']
-        game.won = request.data['won']
         
 
         try:
