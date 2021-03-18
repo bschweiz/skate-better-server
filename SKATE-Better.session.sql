@@ -7,6 +7,9 @@ ON au.id = sk.user_id
 DELETE FROM skatebetterapi_opponent AS o
 WHERE o.id  > 3
 
+DELETE FROM skatebetterapi_game AS g
+WHERE g.id  > 3
+
 SELECT *
 FROM authtoken_token
 
