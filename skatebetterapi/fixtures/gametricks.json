@@ -21,7 +21,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 1,
+        "pk": 3,
         "fields": {
             "game": 1,
             "trick": 3,
@@ -31,7 +31,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 2,
+        "pk": 4,
         "fields": {
             "game": 1,
             "trick": 4,
@@ -41,7 +41,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 2,
+        "pk": 5,
         "fields": {
             "game": 1,
             "trick": 5,
@@ -51,7 +51,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 1,
+        "pk": 6,
         "fields": {
             "game": 1,
             "trick": 6,
