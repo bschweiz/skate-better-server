@@ -4,8 +4,8 @@ FROM auth_user au
 JOIN skatebetterapi_skater sk
 ON au.id = sk.user_id
 
-UPDATE skatebetterapi_skater 
-SET goofy = 1
+DELETE FROM skatebetterapi_opponent AS o
+WHERE o.id  > 3
 
 SELECT *
 FROM authtoken_token
