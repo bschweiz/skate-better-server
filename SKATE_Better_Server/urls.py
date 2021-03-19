@@ -17,12 +17,13 @@ from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
 from skatebetterapi.views import register_user, login_user
-from skatebetterapi.views import Skaters, Opponents, Tricks, Games
+from skatebetterapi.views import Skaters, Opponents, Tricks, Games, GameTricks
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'profile', Skaters, 'profile')
 router.register(r'opponent', Opponents, 'opponent')
-router.register(r'tricks', Tricks, 'opponent')
+router.register(r'tricks', Tricks, 'trick')
+router.register(r'gametricks', GameTricks, 'gametrick')
 router.register(r'game', Games, 'game')
 
 urlpatterns = [
