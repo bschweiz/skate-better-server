@@ -14,7 +14,7 @@ SELECT *
 FROM authtoken_token
 
 SELECT *
-FROM skatebetterapi_trick
+FROM skatebetterapi_gametrick
 
 SELECT *
 FROM skatebetterapi_game
