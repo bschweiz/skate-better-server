@@ -118,5 +118,125 @@
             "stance": 4,
             "description": "Rotate body and board towards heel-side"
         }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 13,
+        "fields": {
+            "skater": 1,
+            "name": "Kickflip",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 14,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie Kickflip",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 15,
+        "fields": {
+            "skater": 1,
+            "name": "Switch Kickflip",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 16,
+        "fields": {
+            "skater": 1,
+            "name": "Nollie Flip",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 17,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Flip",
+            "stance": 1,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 18,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Fakie Flip",
+            "stance": 2,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 19,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Switch Flip",
+            "stance": 3,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 20,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Nollie Flip",
+            "stance": 4,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 21,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Flip",
+            "stance": 1,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 22,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Fakie Flip",
+            "stance": 2,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 23,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Switch Flip",
+            "stance": 3,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 24,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Nollie Flip",
+            "stance": 4,
+            "description": "Rotate body and board towards heel-side"
+        }
     }
 ]
