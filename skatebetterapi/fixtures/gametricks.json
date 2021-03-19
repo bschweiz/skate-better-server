@@ -119,7 +119,6 @@
             "opponent_make": true
         }
     },
-    // end of game 2
     {
         "model": "skatebetterapi.gametrick",
         "pk": 1,
