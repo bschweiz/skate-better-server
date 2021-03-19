@@ -58,5 +58,126 @@
             "user_make": true,
             "opponent_make": false
         }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 7,
+        "fields": {
+            "game": 2,
+            "trick": 7,
+            "user_make": false,
+            "opponent_make": true
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 8,
+        "fields": {
+            "game": 2,
+            "trick": 8,
+            "user_make": true,
+            "opponent_make": false
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 9,
+        "fields": {
+            "game": 2,
+            "trick": 9,
+            "user_make": true,
+            "opponent_make": false
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 10,
+        "fields": {
+            "game": 2,
+            "trick": 10,
+            "user_make": true,
+            "opponent_make": true
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 11,
+        "fields": {
+            "game": 2,
+            "trick": 11,
+            "user_make": false,
+            "opponent_make": true
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 12,
+        "fields": {
+            "game": 2,
+            "trick": 12,
+            "user_make": false,
+            "opponent_make": true
+        }
+    },
+    // end of game 2
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 1,
+        "fields": {
+            "game": 3,
+            "trick": 13,
+            "user_make": true,
+            "opponent_make": false
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 2,
+        "fields": {
+            "game": 3,
+            "trick": 14,
+            "user_make": true,
+            "opponent_make": false
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 3,
+        "fields": {
+            "game": 3,
+            "trick": 15,
+            "user_make": false,
+            "opponent_make": true
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 4,
+        "fields": {
+            "game": 3,
+            "trick": 16,
+            "user_make": true,
+            "opponent_make": false
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 5,
+        "fields": {
+            "game": 3,
+            "trick": 17,
+            "user_make": true,
+            "opponent_make": false
+        }
+    },
+    {
+        "model": "skatebetterapi.gametrick",
+        "pk": 6,
+        "fields": {
+            "game": 3,
+            "trick": 18,
+            "user_make": true,
+            "opponent_make": false
+        }
     }
 ]
