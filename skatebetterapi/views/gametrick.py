@@ -9,9 +9,14 @@ from skatebetterapi.models import Trick, GameTrick
 class GameTricks(ViewSet):
     def list(self, request):
             try:
-                gametrick = GameTrick.objects.all()
+                gametricks = GameTrick.objects.all()
 
-                serializer = GameTrickSerializer(gametrick, many=True, context={'context': request})
+            # Support filtering by game id
+                game = self.request.query_params.get('game', None)
+                if game is not None:
+                    gametricks = gametricks.filter(game=game)
+
+                serializer = GameTrickSerializer(gametricks, many=True, context={'context': request})
 
                 return Response(serializer.data)
                 
