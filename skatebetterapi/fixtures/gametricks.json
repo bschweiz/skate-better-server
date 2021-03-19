@@ -121,7 +121,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 1,
+        "pk": 13,
         "fields": {
             "game": 3,
             "trick": 13,
@@ -131,7 +131,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 2,
+        "pk": 14,
         "fields": {
             "game": 3,
             "trick": 14,
@@ -141,7 +141,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 3,
+        "pk": 15,
         "fields": {
             "game": 3,
             "trick": 15,
@@ -151,7 +151,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 4,
+        "pk": 16,
         "fields": {
             "game": 3,
             "trick": 16,
@@ -161,7 +161,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 5,
+        "pk": 17,
         "fields": {
             "game": 3,
             "trick": 17,
@@ -171,7 +171,7 @@
     },
     {
         "model": "skatebetterapi.gametrick",
-        "pk": 6,
+        "pk": 18,
         "fields": {
             "game": 3,
             "trick": 18,
