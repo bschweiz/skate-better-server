@@ -1,4 +1,5 @@
-from skatebetterapi.views import game
+
+from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -11,15 +12,14 @@ class GameTricks(ViewSet):
     def create(self, request):
         
         gametrick = GameTrick()
-        skater = Skater.objects.get(user=request.auth.user)
-        opponent = Opponent.objects.get(pk=request.data['opponentId'])
-        game.skater = skater
-        game.opponent = opponent
-        game.location = request.data['location']
+        trick = Trick.objects.get(pk=request.data['trickId'])
+        gametrick.trick = trick 
+        gametrick.user_make = request.data['userMake']
+        gametrick.opponnent_make = request.data['opponnentMake']
 
         try:
-            game.save()
-            serializer = GameSerializer(game, context={'request': request})
+            gametrick.save()
+            serializer = GameTrickSerializer(gametrick, context={'request': request})
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
