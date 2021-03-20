@@ -12,12 +12,12 @@ class GameTricks(ViewSet):
     def create(self, request):
         
         gametrick = GameTrick()
-        game = Game.objects.order_by('id')[0]
+        game = Game.objects.latest('date_time')
         gametrick.game = game 
         trick = Trick.objects.get(pk=request.data['trickId'])
         gametrick.trick = trick 
         gametrick.user_make = request.data['userMake']
-        gametrick.opponnent_make = request.data['opponnentMake']
+        gametrick.opponent_make = request.data['opponentMake']
 
         try:
             gametrick.save()
