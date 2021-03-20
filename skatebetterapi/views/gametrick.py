@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from rest_framework import serializers
 from rest_framework import status
 from skatebetterapi.models import Game, Trick, GameTrick
@@ -42,6 +43,10 @@ class GameTricks(ViewSet):
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
             
+    @action(methodds=['get', 'post', 'put', 'delete']
+    
+    game = Game.objects.latest('date_time')
+
 class TrickSerializer(serializers.ModelSerializer):
     
     class Meta:
