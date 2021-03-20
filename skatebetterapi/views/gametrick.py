@@ -7,6 +7,23 @@ from rest_framework import status
 from skatebetterapi.models import Trick, GameTrick
 
 class GameTricks(ViewSet):
+
+    def create(self, request):
+        
+        gametrick = GameTrick()
+        skater = Skater.objects.get(user=request.auth.user)
+        opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game.skater = skater
+        game.opponent = opponent
+        game.location = request.data['location']
+
+        try:
+            game.save()
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
     def list(self, request):
             try:
                 gametricks = GameTrick.objects.all()
