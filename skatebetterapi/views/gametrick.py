@@ -5,14 +5,16 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from skatebetterapi.models import Trick, GameTrick
+from skatebetterapi.models import Game, Trick, GameTrick
 
 class GameTricks(ViewSet):
 
     def create(self, request):
         
         gametrick = GameTrick()
+        game = Game.objects.get(pk=request.data['gameId'])
         trick = Trick.objects.get(pk=request.data['trickId'])
+        gametrick.game = game 
         gametrick.trick = trick 
         gametrick.user_make = request.data['userMake']
         gametrick.opponnent_make = request.data['opponnentMake']
