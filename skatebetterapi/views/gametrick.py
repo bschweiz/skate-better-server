@@ -12,9 +12,9 @@ class GameTricks(ViewSet):
     def create(self, request):
         
         gametrick = GameTrick()
-        game = Game.objects.get(pk=request.data['gameId'])
-        trick = Trick.objects.get(pk=request.data['trickId'])
+        game = Game.objects.order_by('id')[0]
         gametrick.game = game 
+        trick = Trick.objects.get(pk=request.data['trickId'])
         gametrick.trick = trick 
         gametrick.user_make = request.data['userMake']
         gametrick.opponnent_make = request.data['opponnentMake']
