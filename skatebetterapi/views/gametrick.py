@@ -1,12 +1,32 @@
-from skatebetterapi.views import game
+
+from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from rest_framework import serializers
 from rest_framework import status
-from skatebetterapi.models import Trick, GameTrick
+from skatebetterapi.models import Game, Trick, GameTrick
 
 class GameTricks(ViewSet):
+
+    def create(self, request):
+        
+        gametrick = GameTrick()
+        game = Game.objects.latest('date_time')
+        gametrick.game = game 
+        trick = Trick.objects.get(pk=request.data['trickId'])
+        gametrick.trick = trick 
+        gametrick.user_make = request.data['userMake']
+        gametrick.opponent_make = request.data['opponentMake']
+
+        try:
+            gametrick.save()
+            serializer = GameTrickSerializer(gametrick, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
     def list(self, request):
             try:
                 gametricks = GameTrick.objects.all()
@@ -23,6 +43,20 @@ class GameTricks(ViewSet):
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
             
+    @action(methods=['get'], detail=False)
+    def currentgame(self, request, pk=None):
+        try:
+            gametricks = GameTrick.objects.all()
+            game = Game.objects.latest('date_time')
+            these_gametricks = gametricks.filter(game=game)
+
+            serializer = GameTrickSerializer(these_gametricks, many=True, context={'context': request})
+
+            return Response(serializer.data)
+        
+        except Exception as ex:
+                return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+
 class TrickSerializer(serializers.ModelSerializer):
     
     class Meta:
