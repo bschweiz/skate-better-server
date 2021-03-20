@@ -43,9 +43,19 @@ class GameTricks(ViewSet):
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
             
-    @action(methodds=['get', 'post', 'put', 'delete']
-    
-    game = Game.objects.latest('date_time')
+    @action(methodds=['get'], detail=False)
+    def currentgame(self, request, pk=None):
+        try:
+            gametricks = GameTrick.objects.all()
+            game = Game.objects.latest('date_time')
+            these_gametricks = gametricks.objects.filter(game=game)
+
+            serializer = GameTrickSerializer(these_gametricks, many=True, context={'context': request})
+
+            return Response(serializer.data)
+        
+        except Exception as ex:
+                return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
 
 class TrickSerializer(serializers.ModelSerializer):
     
