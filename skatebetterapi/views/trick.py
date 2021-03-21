@@ -47,19 +47,19 @@ class Tricks(ViewSet):
                                 ON gt.trick_id = t.id
                                 WHERE gt.game_id = 2) 
                     """)
-                availableTrickIds = []
+                availableTricks = []
                 dataset = db_cursor
                 
                 for row in dataset:
-
-                    # Create an trick instance from the current row
                     trickId = row['id']
 
+                    trick = Trick.objects.get(pk=trickId)
+                    availableTricks.append(trick)
 
-                    availableTrickIds.append(trickId)
+                    serializer = TrickSerializer(availableTricks, many=True, context={'context': request})
 
-                return Response(availableTrickIds)
-
+                return Response(serializer.data)
+            
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
 
