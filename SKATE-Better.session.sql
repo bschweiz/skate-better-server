@@ -24,3 +24,16 @@ FROM skatebetterapi_game
 
 SELECT *
 FROM skatebetterapi_opponent
+
+SELECT t.id, t.name
+FROM skatebetterapi_trick AS t
+WHERE t.id NOT IN 
+
+
+(SELECT t.id
+FROM skatebetterapi_gametrick AS gt
+JOIN skatebetterapi_game AS g
+ON gt.game_id = g.id
+JOIN skatebetterapi_trick AS t
+ON gt.trick_id = t.id
+WHERE gt.game_id = 1) 
