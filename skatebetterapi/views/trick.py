@@ -45,9 +45,9 @@ class Tricks(ViewSet):
                                 ON gt.game_id = g.id
                                 JOIN skatebetterapi_trick AS t
                                 ON gt.trick_id = t.id
-                                WHERE gt.game_id = 1) 
+                                WHERE gt.game_id = 2) 
                     """)
-                availableTricks = []
+                availableTrickIds = []
                 dataset = db_cursor
                 
                 for row in dataset:
@@ -56,9 +56,9 @@ class Tricks(ViewSet):
                     trickId = row['id']
 
 
-                    availableTricks.append(trickId)
+                    availableTrickIds.append(trickId)
 
-                return Response(availableTricks)
+                return Response(availableTrickIds)
 
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
