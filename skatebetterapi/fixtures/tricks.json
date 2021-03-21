@@ -358,5 +358,86 @@
             "stance": 4,
             "description": "Rotate body and board towards heel-side"
         }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 37,
+        "fields": {
+            "skater": 1,
+            "name": "FS Bigspin",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 38,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie FS Bigspin",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 39,
+        "fields": {
+            "skater": 1,
+            "name": "BS Bigspin",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 40,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie BS Bigspin",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
+    }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 41,
+        "fields": {
+            "skater": 1,
+            "name": "FS Bigspin",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 42,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie FS Bigspin",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 43,
+        "fields": {
+            "skater": 1,
+            "name": "BS Bigspin",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 44,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie BS Bigspin",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
     }
 ]
