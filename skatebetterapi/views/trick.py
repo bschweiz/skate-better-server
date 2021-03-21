@@ -52,15 +52,13 @@ class Tricks(ViewSet):
                 
                 for row in dataset:
 
-                    # Create an tag instance from the current row
+                    # Create an trick instance from the current row
                     trick = Trick(row['id'], row['name'])
 
 
-                    tricks.append(trick.__dict__)
-                serializer = GameTrickSerializer(
-                    these_gametricks, many=True, context={'context': request})
+                    availableTricks.append(trick.__dict__)
 
-                return Response(serializer.data)
+                return json.dumps(availableTricks)
 
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
