@@ -1,7 +1,5 @@
 
 import sqlite3
-import json
-
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
@@ -10,7 +8,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from skatebetterapi.models import Trick
+from skatebetterapi.models import Trick, Game
 
 
 class Tricks(ViewSet):
@@ -34,6 +32,8 @@ class Tricks(ViewSet):
             db_cursor = conn.cursor()
 
             try:
+                game = Game.objects.latest('date_time')
+                currentGameId = game.id
                 db_cursor.execute("""
                     SELECT t.id, t.name
                             FROM skatebetterapi_trick AS t
@@ -45,23 +45,22 @@ class Tricks(ViewSet):
                                 ON gt.game_id = g.id
                                 JOIN skatebetterapi_trick AS t
                                 ON gt.trick_id = t.id
-                                WHERE gt.game_id = 1) 
-                    """)
+                                WHERE gt.game_id = ?) 
+                                """, (currentGameId, ))
+
                 availableTricks = []
                 dataset = db_cursor
                 
                 for row in dataset:
+                    trickId = row['id']
 
-                    # Create an tag instance from the current row
-                    trick = Trick(row['id'], row['name'])
+                    trick = Trick.objects.get(pk=trickId)
+                    availableTricks.append(trick)
 
-
-                    tricks.append(trick.__dict__)
-                serializer = GameTrickSerializer(
-                    these_gametricks, many=True, context={'context': request})
+                    serializer = TrickSerializer(availableTricks, many=True, context={'context': request})
 
                 return Response(serializer.data)
-
+            
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
 
