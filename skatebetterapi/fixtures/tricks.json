@@ -244,7 +244,7 @@
         "pk": 25,
         "fields": {
             "skater": 1,
-            "name": "Kickflip",
+            "name": "Heelflip",
             "stance": 1,
             "description": "First Basic Trick"
         }
@@ -254,7 +254,7 @@
         "pk": 26,
         "fields": {
             "skater": 1,
-            "name": "Fakie Kickflip",
+            "name": "Fakie Heelflip",
             "stance": 2,
             "description": "Traveling backwards, dominant foot combination of pop and lift"
         }
@@ -264,7 +264,7 @@
         "pk": 27,
         "fields": {
             "skater": 1,
-            "name": "Switch Kickflip",
+            "name": "Switch Heelflip",
             "stance": 3,
             "description": "Traveling backwards, non-dominant foot combination of pop and lift"
         }
@@ -274,7 +274,7 @@
         "pk": 28,
         "fields": {
             "skater": 1,
-            "name": "Nollie Flip",
+            "name": "Nollie Heel",
             "stance": 4,
             "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
         }
@@ -284,7 +284,7 @@
         "pk": 29,
         "fields": {
             "skater": 1,
-            "name": "FS 180 Flip",
+            "name": "FS 180 Heel",
             "stance": 1,
             "description": "Rotate body and board towards heelside"
         }
@@ -294,7 +294,7 @@
         "pk": 30,
         "fields": {
             "skater": 1,
-            "name": "FS 180 Fakie Flip",
+            "name": "FS 180 Fakie Heel",
             "stance": 2,
             "description": "Rotate body and board towards heelside"
         }
@@ -304,7 +304,7 @@
         "pk": 31,
         "fields": {
             "skater": 1,
-            "name": "FS 180 Switch Flip",
+            "name": "FS 180 Switch Heel",
             "stance": 3,
             "description": "Rotate body and board towards heelside"
         }
@@ -314,7 +314,7 @@
         "pk": 32,
         "fields": {
             "skater": 1,
-            "name": "FS 180 Nollie Flip",
+            "name": "FS 180 Nollie Heel",
             "stance": 4,
             "description": "Rotate body and board towards toe-side"
         }
@@ -324,7 +324,7 @@
         "pk": 33,
         "fields": {
             "skater": 1,
-            "name": "BS 180 Flip",
+            "name": "BS 180 Heel",
             "stance": 1,
             "description": "Rotate body and board towards toe-side"
         }
@@ -334,7 +334,7 @@
         "pk": 34,
         "fields": {
             "skater": 1,
-            "name": "BS 180 Fakie Flip",
+            "name": "BS 180 Fakie Heel",
             "stance": 2,
             "description": "Rotate body and board towards toe-side"
         }
@@ -344,17 +344,17 @@
         "pk": 35,
         "fields": {
             "skater": 1,
-            "name": "BS 180 Switch Flip",
+            "name": "BS 180 Switch Heel",
             "stance": 3,
             "description": "Rotate body and board towards toe-side"
         }
     },
     {
         "model": "skatebetterapi.trick",
-        "pk": 24,
+        "pk": 36,
         "fields": {
             "skater": 1,
-            "name": "BS 180 Nollie Flip",
+            "name": "BS 180 Nollie Heel",
             "stance": 4,
             "description": "Rotate body and board towards heel-side"
         }
