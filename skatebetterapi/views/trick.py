@@ -34,6 +34,8 @@ class Tricks(ViewSet):
             db_cursor = conn.cursor()
 
             try:
+                game = Game.objects.latest('date_time')
+                currentGameId = game.id
                 db_cursor.execute("""
                     SELECT t.id, t.name
                             FROM skatebetterapi_trick AS t
