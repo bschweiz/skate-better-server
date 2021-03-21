@@ -438,5 +438,85 @@
             "stance": 4,
             "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
         }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 45,
+        "fields": {
+            "skater": 1,
+            "name": "Varial kickflip",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 46,
+        "fields": {
+            "skater": 1,
+            "name": "Varial heelflip",
+            "stance": 1,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 47,
+        "fields": {
+            "skater": 1,
+            "name": "Switch Varial kickflip",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 48,
+        "fields": {
+            "skater": 1,
+            "name": "Nollie Varial kickflip",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 49,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie varial kickflip",
+            "stance": 2,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 50,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie varial heelflip",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 51,
+        "fields": {
+            "skater": 1,
+            "name": "Switch Varial heelflip",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 52,
+        "fields": {
+            "skater": 1,
+            "name": "Nollie Varial heelflip",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
     }
 ]
