@@ -238,5 +238,205 @@
             "stance": 4,
             "description": "Rotate body and board towards heel-side"
         }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 25,
+        "fields": {
+            "skater": 1,
+            "name": "Heelflip",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 26,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie Heelflip",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 27,
+        "fields": {
+            "skater": 1,
+            "name": "Switch Heelflip",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 28,
+        "fields": {
+            "skater": 1,
+            "name": "Nollie Heel",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 29,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Heel",
+            "stance": 1,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 30,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Fakie Heel",
+            "stance": 2,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 31,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Switch Heel",
+            "stance": 3,
+            "description": "Rotate body and board towards heelside"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 32,
+        "fields": {
+            "skater": 1,
+            "name": "FS 180 Nollie Heel",
+            "stance": 4,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 33,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Heel",
+            "stance": 1,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 34,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Fakie Heel",
+            "stance": 2,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 35,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Switch Heel",
+            "stance": 3,
+            "description": "Rotate body and board towards toe-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 36,
+        "fields": {
+            "skater": 1,
+            "name": "BS 180 Nollie Heel",
+            "stance": 4,
+            "description": "Rotate body and board towards heel-side"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 37,
+        "fields": {
+            "skater": 1,
+            "name": "FS Bigspin",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 38,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie FS Bigspin",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 39,
+        "fields": {
+            "skater": 1,
+            "name": "BS Bigspin",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 40,
+        "fields": {
+            "skater": 1,
+            "name": "Fakie BS Bigspin",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 41,
+        "fields": {
+            "skater": 1,
+            "name": "Switch FS Bigspin",
+            "stance": 1,
+            "description": "First Basic Trick"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 42,
+        "fields": {
+            "skater": 1,
+            "name": "Nollie FS Bigspin",
+            "stance": 2,
+            "description": "Traveling backwards, dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 43,
+        "fields": {
+            "skater": 1,
+            "name": "Switch BS Bigspin",
+            "stance": 3,
+            "description": "Traveling backwards, non-dominant foot combination of pop and lift"
+        }
+    },
+    {
+        "model": "skatebetterapi.trick",
+        "pk": 44,
+        "fields": {
+            "skater": 1,
+            "name": "Nollie BS Bigspin",
+            "stance": 4,
+            "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
+        }
     }
 ]
