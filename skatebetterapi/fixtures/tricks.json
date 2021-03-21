@@ -405,7 +405,7 @@
         "pk": 41,
         "fields": {
             "skater": 1,
-            "name": "FS Bigspin",
+            "name": "Switch FS Bigspin",
             "stance": 1,
             "description": "First Basic Trick"
         }
@@ -415,7 +415,7 @@
         "pk": 42,
         "fields": {
             "skater": 1,
-            "name": "Fakie FS Bigspin",
+            "name": "Nollie FS Bigspin",
             "stance": 2,
             "description": "Traveling backwards, dominant foot combination of pop and lift"
         }
@@ -425,7 +425,7 @@
         "pk": 43,
         "fields": {
             "skater": 1,
-            "name": "BS Bigspin",
+            "name": "Switch BS Bigspin",
             "stance": 3,
             "description": "Traveling backwards, non-dominant foot combination of pop and lift"
         }
@@ -435,7 +435,7 @@
         "pk": 44,
         "fields": {
             "skater": 1,
-            "name": "Fakie BS Bigspin",
+            "name": "Nollie BS Bigspin",
             "stance": 4,
             "description": "Traveling forward, popping off nose, non-dominant foot combination of pop and lift "
         }
