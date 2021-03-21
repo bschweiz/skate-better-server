@@ -45,8 +45,8 @@ class Tricks(ViewSet):
                                 ON gt.game_id = g.id
                                 JOIN skatebetterapi_trick AS t
                                 ON gt.trick_id = t.id
-                                WHERE gt.game_id = 2) 
-                    """)
+                                WHERE gt.game_id = ?) 
+                    """, (currentGameId, ))
                 availableTricks = []
                 dataset = db_cursor
                 
