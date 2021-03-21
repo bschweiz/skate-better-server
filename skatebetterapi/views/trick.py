@@ -53,12 +53,12 @@ class Tricks(ViewSet):
                 for row in dataset:
 
                     # Create an trick instance from the current row
-                    trick = Trick(row['id'], row['name'])
+                    trickId = row['id']
 
 
-                    availableTricks.append(trick.__dict__)
+                    availableTricks.append(trickId)
 
-                return json.dumps(availableTricks)
+                return Response(availableTricks)
 
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
