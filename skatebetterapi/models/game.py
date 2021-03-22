@@ -3,6 +3,7 @@ from .skater import Skater
 from .opponent import Opponent
 from .gametrick import GameTrick
 
+
 class Game(models.Model):
 
     skater = models.ForeignKey(Skater, on_delete=models.CASCADE)
@@ -13,16 +14,16 @@ class Game(models.Model):
 
     @property
     def user_score(self):
-        
+
         user_score = GameTrick.objects.filter(
-            game=self, )
+            game=self, user_make=True)
         return user_score.count()
-    
+
     @property
     def opponent_score(self):
-        
+
         opponent_score = GameTrick.objects.filter(
-            game=self, )
+            game=self, opponent_make=True)
         return opponent_score.count()
 
     # @property
@@ -48,9 +49,9 @@ class Game(models.Model):
     #     for rating in ratings:
     #         total_rating += rating.rating
 
-    #     try: 
+    #     try:
     #         avg = total_rating / len(ratings)
-    #     except: 
-    #         ZeroDivisionError 
-    #         avg = "No ratings yet." 
+    #     except:
+    #         ZeroDivisionError
+    #         avg = "No ratings yet."
     #     return avg
