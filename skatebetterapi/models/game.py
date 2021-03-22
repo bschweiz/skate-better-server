@@ -27,3 +27,9 @@ class Game(models.Model):
             game=self, user_make=False, opponent_make=True)).count()
         
         return opponent_points
+
+    @property
+    def won(self):
+        won = True if (self.user_score > self.opponent_score) else  False
+        return won
+
