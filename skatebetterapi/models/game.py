@@ -9,7 +9,7 @@ class Game(models.Model):
     skater = models.ForeignKey(Skater, on_delete=models.CASCADE)
     opponent = models.ForeignKey(Opponent, on_delete=models.CASCADE)
     location = models.CharField(max_length=333)
-    won = models.BooleanField(default=False)
+    # won = models.BooleanField(default=False)
     date_time = models.DateTimeField(auto_now=True)
 
     @property
@@ -27,3 +27,9 @@ class Game(models.Model):
             game=self, user_make=False, opponent_make=True)).count()
         
         return opponent_points
+
+    @property
+    def won(self):
+        won = True if (self.user_score > self.opponent_score) else  False
+        return won
+
