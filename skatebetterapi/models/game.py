@@ -12,11 +12,16 @@ class Game(models.Model):
     date_time = models.DateTimeField(auto_now=True)
 
     @property
-    def score(self):
+    def user_score(self):
         
-        user_score = OrderProduct.objects.filter(
+        user_score = GameTrick.objects.filter(
             product=self, order__payment_type__isnull=False)
-        opponent_score = OrderProduct.objects.filter(
+        return user_score.count()
+    
+    @property
+    def opponent_score(self):
+        
+        opponent_score = GameTrick.objects.filter(
             product=self, order__payment_type__isnull=False)
         return opponent_score.count()
 
