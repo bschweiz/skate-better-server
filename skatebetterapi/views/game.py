@@ -80,8 +80,12 @@ class Games(ViewSet):
 
     @action(methods=['get'], detail=True)
     def current(self, request, pk=None):
+
+        game = Game()
+        skater = Skater.objects.get(user=request.auth.user)
+        opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        
         try:
-            game = Game.objects.latest('date_time')
 
             serializer = GameSerializer(game, many=False, context={'context': request})
 
