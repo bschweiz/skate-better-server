@@ -23,17 +23,6 @@ class Game(models.Model):
 
         return score
 
-    # @property
-    # def opponent_score(self):
-
-    #     opponent_makes = GameTrick.objects.filter(
-    #         game=self, opponent_make=True)
-    #     user_makes = GameTrick.objects.filter(
-    #         game=self, user_make=True)
-    #     score = (opponent_makes - user_makes)
-
-    #     return score.count()
-
     @property
     def opponent_score(self):
 
