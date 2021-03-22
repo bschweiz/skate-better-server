@@ -82,11 +82,11 @@ class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Opponent
-        fields = ('handle')
+        fields = ('handle',)
 
 class GameSerializer(serializers.ModelSerializer):
     opponent = OpponentSerializer(many=False)
     
     class Meta:
         model = Game
-        fields = ('opponent', 'won', 'date_time', 'location', 'id', 'user_score')
+        fields = ('opponent', 'won', 'date_time', 'location', 'id', 'user_score',)

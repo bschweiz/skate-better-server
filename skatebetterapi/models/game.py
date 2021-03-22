@@ -15,14 +15,14 @@ class Game(models.Model):
     def user_score(self):
         
         user_score = GameTrick.objects.filter(
-            game=self, order__payment_type__isnull=False)
+            game=self, )
         return user_score.count()
     
     @property
     def opponent_score(self):
         
         opponent_score = GameTrick.objects.filter(
-            game=self, order__payment_type__isnull=False)
+            game=self, )
         return opponent_score.count()
 
     # @property
