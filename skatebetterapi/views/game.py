@@ -78,6 +78,20 @@ class Games(ViewSet):
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['get'], detail=False)
+    def current(self, request, pk=None):
+
+        game = Game.objects.latest('date_time')
+        
+        try:
+
+            serializer = GameSerializer(game, many=False, context={'context': request})
+
+            return Response(serializer.data)
+            
+        except Exception as ex:
+            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+
 class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
