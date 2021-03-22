@@ -35,7 +35,6 @@ class Games(ViewSet):
         game.skater = skater
         game.opponent = opponent
         game.location = request.data['location']
-        game.won = request.data['won']
         game.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
