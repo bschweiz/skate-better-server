@@ -78,12 +78,10 @@ class Games(ViewSet):
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(methods=['get'], detail=True)
+    @action(methods=['get'], detail=False)
     def current(self, request, pk=None):
 
-        game = Game()
-        skater = Skater.objects.get(user=request.auth.user)
-        opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game = Game.objects.latest('date_time')
         
         try:
 
