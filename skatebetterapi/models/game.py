@@ -1,6 +1,7 @@
 from django.db import models
 from .skater import Skater
 from .opponent import Opponent
+from .gametrick import GameTrick
 
 class Game(models.Model):
 
@@ -11,14 +12,13 @@ class Game(models.Model):
     date_time = models.DateTimeField(auto_now=True)
 
     @property
-    def number_sold(self):
-        """number_sold property of a product
-        Returns:
-            int -- Number items on completed orders
-        """
-        sold = OrderProduct.objects.filter(
+    def score(self):
+        
+        user_score = OrderProduct.objects.filter(
             product=self, order__payment_type__isnull=False)
-        return sold.count()
+        opponent_score = OrderProduct.objects.filter(
+            product=self, order__payment_type__isnull=False)
+        return opponent_score.count()
 
     @property
     def can_be_rated(self):
