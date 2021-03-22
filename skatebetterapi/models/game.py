@@ -26,32 +26,3 @@ class Game(models.Model):
             game=self, opponent_make=True)
         return opponent_score.count()
 
-    # @property
-    # def can_be_rated(self):
-    #     """can_be_rated property, which will be calculated per user
-    #     Returns:
-    #         boolean -- If the user can rate the product or not
-    #     """
-    #     return self.__can_be_rated
-
-    # @can_be_rated.setter
-    # def can_be_rated(self, value):
-    #     self.__can_be_rated = value
-
-    # @property
-    # def average_rating(self):
-    #     """Average rating calculated attribute for each product
-    #     Returns:
-    #         number -- The average rating for the product
-    #     """
-    #     ratings = ProductRating.objects.filter(product=self)
-    #     total_rating = 0
-    #     for rating in ratings:
-    #         total_rating += rating.rating
-
-    #     try:
-    #         avg = total_rating / len(ratings)
-    #     except:
-    #         ZeroDivisionError
-    #         avg = "No ratings yet."
-    #     return avg
