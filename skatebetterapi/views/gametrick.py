@@ -45,23 +45,14 @@ class GameTricks(ViewSet):
             
     def update(self, request, pk=None):
         """
-        @api {PUT} /products/:id PUT changes to product
-        @apiName UpdateProduct
-        @apiGroup Product
-        @apiHeader {String} Authorization Auth token
-        @apiHeaderExample {String} Authorization
-            Token 9ba45f09651c5b0c404f37a2d2572c026c146611
-        @apiParam {id} id Product Id to update
-        @apiSuccessExample {json} Success
-            HTTP/1.1 204 No Content
+        @api {PUT} /gametricks/:id PUT changes to gametrick
+    
         """
-        product = Product.objects.get(pk=pk)
-        product.name = request.data["name"]
-        product.price = request.data["price"]
-        product.description = request.data["description"]
-        product.quantity = request.data["quantity"]
-        product.created_date = request.data["created_date"]
-        product.location = request.data["location"]
+        gametrick = GameTrick.objects.get(pk=pk)
+        gametrick.trick = request.data["trickId"]
+        gametrick.user_make = request.data["userMake"]
+        gametrick.opponent_make = request.data["opponentMake"]
+        
 
         customer = Customer.objects.get(user=request.auth.user)
         product.customer = customer
