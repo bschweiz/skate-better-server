@@ -43,6 +43,35 @@ class GameTricks(ViewSet):
             except Exception as ex:
                 return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
             
+    def update(self, request, pk=None):
+        """
+        @api {PUT} /products/:id PUT changes to product
+        @apiName UpdateProduct
+        @apiGroup Product
+        @apiHeader {String} Authorization Auth token
+        @apiHeaderExample {String} Authorization
+            Token 9ba45f09651c5b0c404f37a2d2572c026c146611
+        @apiParam {id} id Product Id to update
+        @apiSuccessExample {json} Success
+            HTTP/1.1 204 No Content
+        """
+        product = Product.objects.get(pk=pk)
+        product.name = request.data["name"]
+        product.price = request.data["price"]
+        product.description = request.data["description"]
+        product.quantity = request.data["quantity"]
+        product.created_date = request.data["created_date"]
+        product.location = request.data["location"]
+
+        customer = Customer.objects.get(user=request.auth.user)
+        product.customer = customer
+
+        product_category = ProductCategory.objects.get(pk=request.data["category_id"])
+        product.category = product_category
+        product.save()
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
+    
     @action(methods=['get'], detail=False)
     def currentgame(self, request, pk=None):
         try:
