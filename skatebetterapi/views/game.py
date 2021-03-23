@@ -16,6 +16,7 @@ class Games(ViewSet):
         game = Game()
         skater = Skater.objects.get(user=request.auth.user)
         opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game.location = request.data['location']
         game.skater = skater
         game.opponent = opponent
 
@@ -114,6 +115,25 @@ class Games(ViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(methods=['post'], detail=False)
+    def rematch(self, request, pk=None):
+        # when you need to rematch the same opponent at same
+
+        game = Game()
+        original_game = Game.objects.latest('date_time')
+        skater = Skater.objects.get(user=request.auth.user)
+        game.skater = skater
+        game.opponent = original_game.opponent
+        game.location = original_game.location
+        
+
+        try:
+            game.save()
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
     @action(methods=['get'], detail=False)
     def current(self, request, pk=None):
@@ -133,7 +153,7 @@ class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Opponent
-        fields = ('handle',)
+        fields = ('handle', 'id', )
 
 class GameSerializer(serializers.ModelSerializer):
     opponent = OpponentSerializer(many=False)
