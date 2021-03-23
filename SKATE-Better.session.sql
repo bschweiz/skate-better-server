@@ -20,7 +20,8 @@ SELECT *
 FROM skatebetterapi_skater
 
 SELECT *
-FROM skatebetterapi_gametrick
+FROM skatebetterapi_gametrick AS gt
+WHERE gt.id = 153
 
 SELECT *
 FROM skatebetterapi_game
