@@ -16,9 +16,10 @@ class Games(ViewSet):
         game = Game()
         skater = Skater.objects.get(user=request.auth.user)
         opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game.location = request.data['location']
         game.skater = skater
         game.opponent = opponent
-        game.location = request.data['location']
+
 
         try:
             game.save()
@@ -66,6 +67,31 @@ class Games(ViewSet):
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+    def destroy(self, request, pk=None):
+        """
+        @api {DELETE} /products/:id DELETE product
+        @apiName DeleteProduct
+        @apiGroup Product
+        @apiHeader {String} Authorization Auth token
+        @apiHeaderExample {String} Authorization
+            Token 9ba45f09651c5b0c404f37a2d2572c026c146611
+        @apiParam {id} id Product Id to delete
+        @apiSuccessExample {json} Success
+            HTTP/1.1 204 No Content
+        """
+        try:
+            game = Game.objects.get(pk=pk)
+            game.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except Game.DoesNotExist as ex:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
     @action(methods=['post'], detail=False)
     def addnewopponent(self, request, pk=None):
         # when you need to add an opponent and a new game
@@ -81,6 +107,25 @@ class Games(ViewSet):
         game.skater = skater
         game.opponent_id = opponent.id
         game.location = request.data['location']
+        
+
+        try:
+            game.save()
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(methods=['post'], detail=False)
+    def rematch(self, request, pk=None):
+        # when you need to rematch the same opponent at same
+
+        game = Game()
+        original_game = Game.objects.latest('date_time')
+        skater = Skater.objects.get(user=request.auth.user)
+        game.skater = skater
+        game.opponent = original_game.opponent
+        game.location = original_game.location
         
 
         try:
@@ -108,7 +153,7 @@ class OpponentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Opponent
-        fields = ('handle',)
+        fields = ('handle', 'id', )
 
 class GameSerializer(serializers.ModelSerializer):
     opponent = OpponentSerializer(many=False)

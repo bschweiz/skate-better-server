@@ -11,10 +11,13 @@ DELETE FROM skatebetterapi_gametrick AS gt
 WHERE gt.id  > 18
 
 DELETE FROM skatebetterapi_game AS g
-WHERE g.id  > 3
+WHERE g.id  > 30
 
 SELECT *
 FROM authtoken_token
+
+SELECT *
+FROM skatebetterapi_skater
 
 SELECT *
 FROM skatebetterapi_gametrick
