@@ -66,6 +66,31 @@ class Games(ViewSet):
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+    def destroy(self, request, pk=None):
+        """
+        @api {DELETE} /products/:id DELETE product
+        @apiName DeleteProduct
+        @apiGroup Product
+        @apiHeader {String} Authorization Auth token
+        @apiHeaderExample {String} Authorization
+            Token 9ba45f09651c5b0c404f37a2d2572c026c146611
+        @apiParam {id} id Product Id to delete
+        @apiSuccessExample {json} Success
+            HTTP/1.1 204 No Content
+        """
+        try:
+            game = Game.objects.get(pk=pk)
+            game.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except Game.DoesNotExist as ex:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
     @action(methods=['post'], detail=False)
     def addnewopponent(self, request, pk=None):
         # when you need to add an opponent and a new game
