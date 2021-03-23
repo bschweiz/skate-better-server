@@ -27,17 +27,6 @@ class Games(ViewSet):
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
     
-    def update(self, request):
-        
-        game = Game()
-        skater = Skater.objects.get(user=request.auth.user)
-        opponent = Opponent.objects.get(pk=request.data['opponentId'])
-        game.skater = skater
-        game.opponent = opponent
-        game.location = request.data['location']
-        game.save()
-
-        return Response({}, status=status.HTTP_204_NO_CONTENT)
     
     def list(self, request):
         try:
@@ -52,6 +41,18 @@ class Games(ViewSet):
             
         except Exception as ex:
             return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+    
+    def update(self, request):
+        
+        game = Game()
+        skater = Skater.objects.get(user=request.auth.user)
+        opponent = Opponent.objects.get(pk=request.data['opponentId'])
+        game.skater = skater
+        game.opponent = opponent
+        game.location = request.data['location']
+        game.save()
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
 
     @action(methods=['post'], detail=False)
     def addnewopponent(self, request, pk=None):
