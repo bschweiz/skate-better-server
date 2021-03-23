@@ -32,9 +32,9 @@ class GameTricks(ViewSet):
                 gametricks = GameTrick.objects.all()
 
             # Support filtering by game id
-                game = self.request.query_params.get('game', None)
-                if game is not None:
-                    gametricks = gametricks.filter(game=game)
+                gameId = self.request.query_params.get('gameId', None)
+                if gameId is not None:
+                    gametricks = gametricks.filter(game=gameId)
 
                 serializer = GameTrickSerializer(gametricks, many=True, context={'context': request})
 
