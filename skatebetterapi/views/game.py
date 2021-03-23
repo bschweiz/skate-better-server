@@ -18,7 +18,7 @@ class Games(ViewSet):
         opponent = Opponent.objects.get(pk=request.data['opponentId'])
         game.skater = skater
         game.opponent = opponent
-        game.location = request.data['location']
+
 
         try:
             game.save()

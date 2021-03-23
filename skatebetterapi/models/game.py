@@ -9,24 +9,31 @@ class Game(models.Model):
     skater = models.ForeignKey(Skater, on_delete=models.CASCADE)
     opponent = models.ForeignKey(Opponent, on_delete=models.CASCADE)
     location = models.CharField(max_length=333)
-    won = models.BooleanField(default=False)
+    # won = models.BooleanField(default=False)
     date_time = models.DateTimeField(auto_now=True)
 
     @property
     def user_score(self):
+        try:  
+            user_points = (GameTrick.objects.filter(
+                game=self, user_make=True, opponent_make=False)).count()
+            return user_points
 
-        user_points = (GameTrick.objects.filter(
-            game=self, user_make=True, opponent_make=False)).count()
+        except: 
+            user_points = 0
+            return user_points
         
-        return user_points
 
     @property
     def opponent_score(self):
-
-        opponent_points = (GameTrick.objects.filter(
-            game=self, user_make=False, opponent_make=True)).count()
+        try:
+            opponent_points = (GameTrick.objects.filter(
+                game=self, user_make=False, opponent_make=True)).count()
+            return opponent_points
         
-        return opponent_points
+        except: 
+            opponent_points = 0
+            return opponent_points
 
     @property
     def won(self):
