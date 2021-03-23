@@ -51,16 +51,10 @@ class GameTricks(ViewSet):
         gametrick = GameTrick.objects.get(pk=pk)
         trick = Trick.objects.get(pk=request.data['trickId'])
         gametrick.trick = trick 
-        gametrick.user_make = request.data["userMake"]
-        gametrick.opponent_make = request.data["opponentMake"]
+        gametrick.user_make = request.data['userMake']
+        gametrick.opponent_make = request.data['opponentMake']
         
-
-        customer = Customer.objects.get(user=request.auth.user)
-        product.customer = customer
-
-        product_category = ProductCategory.objects.get(pk=request.data["category_id"])
-        product.category = product_category
-        product.save()
+        gametrick.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
