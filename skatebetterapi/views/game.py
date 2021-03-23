@@ -27,6 +27,33 @@ class Games(ViewSet):
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
     
+    def retrieve(self, request, pk=None):
+        """
+        @api {GET} /game/:id GET product
+        @apiName GetGame
+        @apiGroup Game
+        @apiParam {id} id Game Id
+        """
+        try:
+            game = Game.objects.get(pk=pk)
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data)
+
+        except Exception as ex:
+            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+
+    def list(self, request):
+        try:
+            skater = Skater.objects.get(user=request.auth.user)
+            games = Game.objects.filter(skater=skater)
+
+            serializer = GameSerializer(games, many=True, context={'context': request})
+
+            return Response(serializer.data)
+            
+        except Exception as ex:
+            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
+    
     def update(self, request):
         
         game = Game()
@@ -38,20 +65,6 @@ class Games(ViewSet):
         game.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
-    
-    def list(self, request):
-        try:
-            skater = Skater.objects.get(user=request.auth.user)
-            games = Game.objects.filter(skater=skater)
-            
-        
-
-            serializer = GameSerializer(games, many=True, context={'context': request})
-
-            return Response(serializer.data)
-            
-        except Exception as ex:
-            return HttpResponseServerError(ex, status=status.HTTP_404_NOT_FOUND)
 
     @action(methods=['post'], detail=False)
     def addnewopponent(self, request, pk=None):
