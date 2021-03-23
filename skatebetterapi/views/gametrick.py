@@ -49,7 +49,8 @@ class GameTricks(ViewSet):
     
         """
         gametrick = GameTrick.objects.get(pk=pk)
-        gametrick.trick = request.data["trickId"]
+        trick = Trick.objects.get(pk=request.data['trickId'])
+        gametrick.trick = trick 
         gametrick.user_make = request.data["userMake"]
         gametrick.opponent_make = request.data["opponentMake"]
         
