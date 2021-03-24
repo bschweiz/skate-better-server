@@ -45,30 +45,16 @@ class GameTricks(ViewSet):
             
     def update(self, request, pk=None):
         """
-        @api {PUT} /products/:id PUT changes to product
-        @apiName UpdateProduct
-        @apiGroup Product
-        @apiHeader {String} Authorization Auth token
-        @apiHeaderExample {String} Authorization
-            Token 9ba45f09651c5b0c404f37a2d2572c026c146611
-        @apiParam {id} id Product Id to update
-        @apiSuccessExample {json} Success
-            HTTP/1.1 204 No Content
+        @api {PUT} /gametricks/:id PUT changes to gametrick
+    
         """
-        product = Product.objects.get(pk=pk)
-        product.name = request.data["name"]
-        product.price = request.data["price"]
-        product.description = request.data["description"]
-        product.quantity = request.data["quantity"]
-        product.created_date = request.data["created_date"]
-        product.location = request.data["location"]
-
-        customer = Customer.objects.get(user=request.auth.user)
-        product.customer = customer
-
-        product_category = ProductCategory.objects.get(pk=request.data["category_id"])
-        product.category = product_category
-        product.save()
+        gametrick = GameTrick.objects.get(pk=pk)
+        trick = Trick.objects.get(pk=request.data['trickId'])
+        gametrick.trick = trick 
+        gametrick.user_make = request.data['userMake']
+        gametrick.opponent_make = request.data['opponentMake']
+        
+        gametrick.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     

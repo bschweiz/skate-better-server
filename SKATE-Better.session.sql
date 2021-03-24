@@ -20,10 +20,12 @@ SELECT *
 FROM skatebetterapi_skater
 
 SELECT *
-FROM skatebetterapi_gametrick
+FROM skatebetterapi_gametrick AS gt
+WHERE gt.id = 153
 
 SELECT *
-FROM skatebetterapi_game
+FROM skatebetterapi_game AS g
+WHERE g.id = 53
 
 SELECT *
 FROM skatebetterapi_opponent
@@ -40,4 +42,4 @@ WHERE t.id NOT IN
         ON gt.game_id = g.id
         JOIN skatebetterapi_trick AS t
         ON gt.trick_id = t.id
-        WHERE gt.game_id = 1) 
+        WHERE gt.game_id = 54) 
