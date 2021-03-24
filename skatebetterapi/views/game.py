@@ -46,7 +46,7 @@ class Games(ViewSet):
     def list(self, request):
         try:
             skater = Skater.objects.get(user=request.auth.user)
-            games = Game.objects.filter(skater=skater)
+            games = Game.objects.filter(skater_id=skater.id)
 
             serializer = GameSerializer(games, many=True, context={'context': request})
 
