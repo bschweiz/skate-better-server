@@ -11,7 +11,7 @@ DELETE FROM skatebetterapi_gametrick AS gt
 WHERE gt.id  > 18
 
 DELETE FROM skatebetterapi_game AS g
-WHERE g.id  > 30
+WHERE g.id  > 10
 
 SELECT *
 FROM authtoken_token
@@ -25,7 +25,8 @@ WHERE gt.id = 153
 
 SELECT *
 FROM skatebetterapi_game AS g
-WHERE g.id = 53
+WHERE g.skater_id = 2
+
 
 SELECT *
 FROM skatebetterapi_opponent
